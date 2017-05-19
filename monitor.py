@@ -156,9 +156,9 @@ if __name__ == "__main__":
     check = Checks(hosts)
     check.run()
 
-    if args.mail and check.seen(args.file.name):
+    if args.mail and not check.seen(args.file.name):
         check.email_failures([ 'jane.doe@example.com', 'john.smith@example.org' ])
-    else:
+    elif not args.mail:
         if check.seen(args.file.name):
             print "NOTE: we've already seen these fails"
         check.print_failures()
