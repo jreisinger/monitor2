@@ -98,7 +98,7 @@ class Checks():
     def print_failures(self):
         print(self._format_fails(self.fails))
 
-    def email_faillures(self, emails):
+    def email_failures(self, emails):
         """If we have some failed checks send them via email"""
 
         sender = 'monitor'
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     check.run()
 
     if args.mail and check.seen(args.file.name):
-        check.email_faillures([ 'jane.doe@example.com', 'john.smith@example.org' ])
+        check.email_failures([ 'jane.doe@example.com', 'john.smith@example.org' ])
     else:
         if check.seen(args.file.name):
             print "NOTE: we've already seen these fails"
